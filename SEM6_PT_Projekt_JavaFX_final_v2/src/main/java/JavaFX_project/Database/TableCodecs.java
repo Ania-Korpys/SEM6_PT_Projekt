@@ -117,7 +117,7 @@ public class TableCodecs {
                 + ", typ_kompresji=" + compression_type + ", maks_mips=" + mips + ", mos=" + mos + '}';
     }*/
 
-    @Override
+        /*@Override
     public String toString() {
         return "{\n " + '"' + "id_kodeka" + '"' + ':' + '"' + codec_id + '"' +
                 ",\n    " + '"' + "nazwa_kodeka" + '"' + ':' + '"' + codec_name + '"' +
@@ -129,5 +129,19 @@ public class TableCodecs {
                 ",\n    " + '"' + "typ_kompresji" + '"' + ':' + '"' + compression_type + '"' +
                 ",\n    " + '"' + "maks_mips" + '"' + ':' + '"' + mips + '"' +
                 ",\n    " + '"' + "mos" + '"' + ':' + '"' + mos + '"' + "\n}";
+    }*/
+
+    @Override
+    public String toString() {
+        return  "\n    " + "id_kodeka: " + codec_id +
+                ",\n    " + "Nazwa kodeka: " + codec_name +
+                ",\n    " + "Zakres częstotliwości: " + frequency_range +
+                ",\n    " + "Maksymalna przepływność (kb/s): " + max_kbps_bitrate +
+                ",\n    " + "Ramka (ms): " + frame_ms +
+                ",\n    " + "Maksymalna ilość bitów na ramkę: " + max_bits_per_frame +
+                ",\n    " + "Opóźnienie algorytmiczne (ms): " + algorithmic_delay_ms +
+                ",\n    " + "Typ kompresji: " + compression_type +
+                ",\n    " + "Maksymalna wartość MIPS: " + mips +
+                ",\n    " + "MOS: " + mos;
     }
 }

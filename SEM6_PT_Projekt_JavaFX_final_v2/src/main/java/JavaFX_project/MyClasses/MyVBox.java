@@ -111,13 +111,13 @@ public class MyVBox {
         searchButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");
 
             // przycisk do zapisania wyników do pliku tekstowego
-        Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie new.txt z wynikiem wyszukiwań.");
+        Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie wyniki.txt z wynikiem wyszukiwań.");
         tooltipSave.setTextAlignment(TextAlignment.CENTER);
         saveButton.setTooltip(tooltipSave);
         saveButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");
 
             // przycisk do zresetowania wyszukiwań
-        Tooltip tooltipReset = new Tooltip("Zresetuj wyszukiwania. Wyświetl całą tabelę.");
+        Tooltip tooltipReset = new Tooltip("Zresetuj wyszukiwania, a następnie wyświetl całą tabelę.");
         tooltipReset.setTextAlignment(TextAlignment.CENTER);
         resetButton.setTooltip(tooltipReset);
         resetButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");

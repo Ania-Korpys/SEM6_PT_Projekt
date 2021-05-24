@@ -64,7 +64,7 @@ public class JavaFXMain extends Application {
                 String frequency_type = myVBox.choiceBox_Frequency.getValue().toString(), compression_type = myVBox.choiceBox_CompressionTypes.getValue().toString();
 
                 boolean onlyNumbers = true;
-                Pattern pattern = Pattern.compile("([1-9]*)|([0-9]+\\.[0-9]+)");
+                Pattern pattern = Pattern.compile("([0-9]*)|([0-9]+\\.[0-9]+)");
                 if (pattern.matcher(myVBox.fieldFromMax_kbps_bitrate.getText()).matches() == false) {
                     onlyNumbers = false;
                 }
@@ -118,7 +118,7 @@ public class JavaFXMain extends Application {
                     }
                 } else {
                     tempBox = myVBox.getMyCodecsVBox(myTableData.getCodecsTableView());
-                    Label info = new Label("Wpisz tylko liczby.");
+                    Label info = new Label("W polach parametrów umieszczaj tylko dodatnie wartości liczbowe.");
                     info.setFont(new Font("Arial", 15));
                     info.setTextFill(Color.RED);
                     tempBox.getChildren().addAll(info);
@@ -135,7 +135,7 @@ public class JavaFXMain extends Application {
             public void handle(ActionEvent e) {
                 PrintWriter zapis = null;
                 try {
-                    zapis = new PrintWriter("new.txt");
+                    zapis = new PrintWriter("wyniki.txt");
                 } catch (FileNotFoundException fileNotFoundException) {
                     fileNotFoundException.printStackTrace();
                 }
