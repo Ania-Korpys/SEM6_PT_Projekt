@@ -10,8 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import java.util.ArrayList;
-
 public class MyVBox {
 
     public final Label labelParameterDescription = new Label("Opis parametrów");
@@ -19,11 +17,14 @@ public class MyVBox {
 
     public final Label labelCodecsTable = new Label("Kodeki");
 
+    /* menubutton
     public MenuItem menuItemCodecs = new MenuItem("Kodeki");
     public MenuItem menuItemParameter = new MenuItem("Opis parametrów");
-    public MenuButton menuButton;
+    public MenuButton menuButton; */
 
-    public ChoiceBox choiceBox_codec_name = new ChoiceBox(FXCollections.observableArrayList("-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729", "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"));
+    public ChoiceBox choiceBox_codec_name = new ChoiceBox(FXCollections.observableArrayList("-", "AMR-NB", "AMR-WB " +
+            "(G", ".722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729", "G",
+            ".729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"));
     public ChoiceBox choiceBox_Frequency = new ChoiceBox(FXCollections.observableArrayList("-", "Szeroki", "Wąski"));
     public TextField fieldFromMax_kbps_bitrate = new TextField();
     public TextField fieldToMax_kbps_bitrate = new TextField();
@@ -33,9 +34,13 @@ public class MyVBox {
     public TextField fieldToMax_bits_per_frame = new TextField();
     public TextField fieldFromAlgorithmic_delay_ms = new TextField();
     public TextField fieldToAlgorithmic_delay_ms = new TextField();
-    public ChoiceBox choiceBox_Category = new ChoiceBox(FXCollections.observableArrayList("-", "falowy", "predykcyjny"));
-    public ChoiceBox choiceBox_Compression_family = new ChoiceBox(FXCollections.observableArrayList("-", "CELP", "LPC", "MDCT", "NFC", "PCM"));
-    public ChoiceBox choiceBox_Compression_variant = new ChoiceBox(FXCollections.observableArrayList("-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"));
+    public ChoiceBox choiceBox_Category = new ChoiceBox(FXCollections.observableArrayList("-", "falowy", "predykcyjny"
+    ));
+    public ChoiceBox choiceBox_Compression_family = new ChoiceBox(FXCollections.observableArrayList("-", "CELP", "LPC"
+            , "MDCT", "NFC", "PCM"));
+    public ChoiceBox choiceBox_Compression_variant = new ChoiceBox(FXCollections.observableArrayList("-", "ACELP",
+            "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB" +
+                    "-ADPCM", "TSNFC", "VSELP"));
     public TextField fieldFromMips = new TextField();
     public TextField fieldToMips = new TextField();
     public TextField fieldFromMos = new TextField();
@@ -49,13 +54,16 @@ public class MyVBox {
     private HBox hBox1, hBox2, hBox3, hBox4;
 
     public MyVBox() {
+        /*  menubutton
         labelParameterDescription.setFont(new Font("Arial", 20));
+        menuButton = new MenuButton("opcje wyświetlania", null, menuItemCodecs, menuItemParameter); */
         labelCodecsTable.setFont(new Font("Arial", 20));
-        menuButton = new MenuButton("opcje wyświetlania", null, menuItemCodecs, menuItemParameter); //
 
         /* do szukania */
         // nazwy kodeków
-        String[] codec_names = {"-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729", "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"};
+        String[] codec_names = {"-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G" +
+                ".723.1", "G.726", "G.728", "G.729", "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR",
+                "Speex (NB)", "Speex (WB)", "iLBC"};
         Label labelCodecName = new Label("Nazwa kodeka: ");
         choiceBox_codec_name.setTooltip(new Tooltip("Wybierz nazwę kodeka"));
         choiceBox_codec_name.setValue(codec_names[0]);
@@ -97,7 +105,8 @@ public class MyVBox {
         fieldFromMax_bits_per_frame.setMaxWidth(50);
         fieldToMax_bits_per_frame.setMaxWidth(50);
 
-        HBox hBoxBitsPerFrame = new HBox(labelMax_bits_per_frame, fieldFromMax_bits_per_frame, fieldToMax_bits_per_frame);
+        HBox hBoxBitsPerFrame = new HBox(labelMax_bits_per_frame, fieldFromMax_bits_per_frame,
+                fieldToMax_bits_per_frame);
         hBoxBitsPerFrame.setSpacing(20);
         hBoxBitsPerFrame.setMinWidth(400);
 
@@ -106,7 +115,8 @@ public class MyVBox {
         fieldFromAlgorithmic_delay_ms.setMaxWidth(50);
         fieldToAlgorithmic_delay_ms.setMaxWidth(50);
 
-        HBox hBoxDelay = new HBox(labelAlgorithmic_delay_ms, fieldFromAlgorithmic_delay_ms, fieldToAlgorithmic_delay_ms);
+        HBox hBoxDelay = new HBox(labelAlgorithmic_delay_ms, fieldFromAlgorithmic_delay_ms,
+                fieldToAlgorithmic_delay_ms);
         hBoxDelay.setSpacing(20);
         hBoxDelay.setMinWidth(350);
 
@@ -132,7 +142,8 @@ public class MyVBox {
 
         // wariant_kompresji
         Label labelCompression = new Label("Wariant kompresji: ");
-        String[] compression_types = {"-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"};
+        String[] compression_types = {"-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC",
+                "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"};
         choiceBox_Compression_variant.setTooltip(new Tooltip("Wybierz wariant kompresji"));
         choiceBox_Compression_variant.setValue(compression_types[0]);
 
@@ -159,16 +170,21 @@ public class MyVBox {
         hBoxMos.setMinWidth(400);
 
 
-        //hBox1 = new HBox(labelFrequency, choiceBox_Frequency, new Separator(), labelMax_kbps_bitrate, fieldFromMax_kbps_bitrate, fieldToMax_kbps_bitrate, new Separator(), labelFrame_ms, fieldFromFrame_ms, fieldToFrame_ms);
+        //hBox1 = new HBox(labelFrequency, choiceBox_Frequency, new Separator(), labelMax_kbps_bitrate,
+        // fieldFromMax_kbps_bitrate, fieldToMax_kbps_bitrate, new Separator(), labelFrame_ms, fieldFromFrame_ms,
+        // fieldToFrame_ms);
         hBox1 = new HBox(hBoxCodecs, hBoxFrequency, hBoxBitrate);
         hBox1.setSpacing(20);
 
-        //hBox2 = new HBox(labelMax_bits_per_frame, fieldFromMax_bits_per_frame, fieldToMax_bits_per_frame, new Separator(), labelAlgorithmic_delay_ms, fieldFromAlgorithmic_delay_ms, fieldToAlgorithmic_delay_ms);
+        //hBox2 = new HBox(labelMax_bits_per_frame, fieldFromMax_bits_per_frame, fieldToMax_bits_per_frame, new
+        // Separator(), labelAlgorithmic_delay_ms, fieldFromAlgorithmic_delay_ms, fieldToAlgorithmic_delay_ms);
         hBox2 = new HBox(hBoxFrame, hBoxBitsPerFrame, hBoxDelay);
         hBox2.setSpacing(20);
 
-        //hBox3 = new HBox(labelCompression, choiceBox_CompressionTypes, new Separator(), labelMips, fieldFromMips, fieldToMips, new Separator(), labelMos, fieldFromMos, fieldToMos);
-        hBox3 = new HBox(hBoxCategory, hBoxCompressionFamily, hBoxCompressionVariant); // hBoxCompression, hBoxMips, hBoxMos
+        //hBox3 = new HBox(labelCompression, choiceBox_CompressionTypes, new Separator(), labelMips, fieldFromMips,
+        // fieldToMips, new Separator(), labelMos, fieldFromMos, fieldToMos);
+        hBox3 = new HBox(hBoxCategory, hBoxCompressionFamily, hBoxCompressionVariant); // hBoxCompression, hBoxMips,
+        // hBoxMos
         hBox3.setSpacing(20);
 
         hBox4 = new HBox(hBoxMips, hBoxMos); // hBoxCompression, hBoxMips, hBoxMos
@@ -182,7 +198,8 @@ public class MyVBox {
         searchButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");
 
         // przycisk do zapisania wyników do pliku tekstowego
-        Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie wyniki.txt z wynikiem wyszukiwań.");
+        Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie wyniki.txt z wynikiem " +
+                "wyszukiwań.");
         tooltipSave.setTextAlignment(TextAlignment.CENTER);
         saveButton.setTooltip(tooltipSave);
         saveButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");
@@ -206,7 +223,8 @@ public class MyVBox {
         VBox myVBox = new VBox();
         myVBox.setSpacing(5);
         myVBox.setPadding(new Insets(10, 0, 0, 10));
-        myVBox.getChildren().addAll(menuButton, labelCodecsTable, codecsTableView, hBox1, hBox2, hBox3, hBox4, toolBarButtons);
+        myVBox.getChildren().addAll(labelCodecsTable, codecsTableView, new Separator(), hBox1, hBox2, hBox3, hBox4,
+                toolBarButtons); // menuButton,
         return myVBox;
     }
 
@@ -217,7 +235,7 @@ public class MyVBox {
         paramDescription.wrappingWidthProperty().set(1200);
         myVBox.setSpacing(5);
         myVBox.setPadding(new Insets(10, 0, 0, 10));
-        myVBox.getChildren().addAll(menuButton, labelParameterDescription, paramDescription);
+        myVBox.getChildren().addAll(labelParameterDescription, paramDescription); // menuButton,
         return myVBox;
     }
 }

@@ -23,8 +23,10 @@ public class TableDaoCodecs {
     }
 
     public List<TableCodecs> getAll() {
-        String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c.ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c.wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
+        String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c" +
+                ".ramka_ms, " +
+                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c" +
+                ".wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
         try {
             return jdbc.query(sql, new RowMapper<TableCodecs>() {
                 @Override
@@ -54,9 +56,17 @@ public class TableDaoCodecs {
         }
     }
 
-    public List<TableCodecs> getSpecified(String codec_name, String frequency_range, String max_kbps_bitrateFrom, String max_kbps_bitrateTo, String frame_msFrom, String frame_msTo, String max_bits_per_frameFrom, String max_bits_per_frameTo, String algorithmic_delay_msFrom, String algorithmic_delay_msTo, String codec_category, String compression_family, String compression_version, String mipsFrom, String mipsTo, String mosFrom, String mosTo) {
-        String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c.ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c.wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
+    public List<TableCodecs> getSpecified(String codec_name, String frequency_range, String max_kbps_bitrateFrom,
+                                          String max_kbps_bitrateTo, String frame_msFrom, String frame_msTo,
+                                          String max_bits_per_frameFrom, String max_bits_per_frameTo,
+                                          String algorithmic_delay_msFrom, String algorithmic_delay_msTo,
+                                          String codec_category, String compression_family,
+                                          String compression_version, String mipsFrom, String mipsTo, String mosFrom,
+                                          String mosTo) {
+        String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c" +
+                ".ramka_ms, " +
+                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c" +
+                ".wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
 
         if (codec_name != "-" || frequency_range != "-" || max_kbps_bitrateFrom != "" || max_kbps_bitrateTo != "" || frame_msFrom != "" || frame_msTo != "" || max_bits_per_frameFrom != "" || max_bits_per_frameTo != "" || algorithmic_delay_msFrom != "" || algorithmic_delay_msTo != "" || codec_category != "-" || compression_family != "-" || compression_version != "-" || mipsFrom != "" || mipsTo != "" || mosFrom != "" || mosTo != "") {
             boolean first = true;
@@ -108,10 +118,12 @@ public class TableDaoCodecs {
                     max_bits_per_frameTo = "884";
                 }
                 if (first) {
-                    sql = sql + "WHERE c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND :max_bits_per_frameTo ";
+                    sql = sql + "WHERE c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
+                            ":max_bits_per_frameTo ";
                     first = false;
                 } else {
-                    sql = sql + "AND c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND :max_bits_per_frameTo ";
+                    sql = sql + "AND c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
+                            ":max_bits_per_frameTo ";
                 }
             }
             if (!algorithmic_delay_msFrom.isEmpty() || !algorithmic_delay_msTo.isEmpty()) {
@@ -122,10 +134,12 @@ public class TableDaoCodecs {
                     algorithmic_delay_msTo = "40";
                 }
                 if (first) {
-                    sql = sql + "WHERE c.opoznienie_algorytmiczne_ms BETWEEN :algorithmic_delay_msFrom AND :algorithmic_delay_msTo ";
+                    sql = sql + "WHERE c.opoznienie_algorytmiczne_ms BETWEEN :algorithmic_delay_msFrom AND " +
+                            ":algorithmic_delay_msTo ";
                     first = false;
                 } else {
-                    sql = sql + "AND c.opoznienie_algorytmiczne_ms BETWEEN :algorithmic_delay_msFrom AND :algorithmic_delay_msTo ";
+                    sql = sql + "AND c.opoznienie_algorytmiczne_ms BETWEEN :algorithmic_delay_msFrom AND " +
+                            ":algorithmic_delay_msTo ";
                 }
             }
             if (codec_category != "-") {

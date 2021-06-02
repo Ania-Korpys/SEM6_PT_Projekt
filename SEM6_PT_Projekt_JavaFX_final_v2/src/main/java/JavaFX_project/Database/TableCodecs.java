@@ -19,7 +19,9 @@ public class TableCodecs {
     public TableCodecs() {
     }
 
-    public TableCodecs(int codec_id, String codec_name, String frequency_range, float max_kbps_bitrate, float frame_ms, int max_bits_per_frame, float algorithmic_delay_ms, String codec_category, String compression_family, String compression_variant, float mips, String mos) {
+    public TableCodecs(int codec_id, String codec_name, String frequency_range, float max_kbps_bitrate,
+                       float frame_ms, int max_bits_per_frame, float algorithmic_delay_ms, String codec_category,
+                       String compression_family, String compression_variant, float mips, String mos) {
         this.codec_id = codec_id;
         this.codec_name = codec_name;
         this.frequency_range = frequency_range;
@@ -132,9 +134,11 @@ public class TableCodecs {
 
     /*@Override
     public String toString() {
-        return "{" + "id_kodeka=" + codec_id + ", nazwa_kodeka=" + codec_name + ", zakres_czestotliwosci=" + frequency_range
+        return "{" + "id_kodeka=" + codec_id + ", nazwa_kodeka=" + codec_name + ", zakres_czestotliwosci=" +
+        frequency_range
                 + ", maks_przeplywnosc_kbps=" + max_kbps_bitrate + ", ramka_ms=" + frame_ms
-                + ", maks_ilosc_bitow_na_ramke=" + max_bits_per_frame + ", opoznienie_algorytmiczne_ms=" + algorithmic_delay_ms
+                + ", maks_ilosc_bitow_na_ramke=" + max_bits_per_frame + ", opoznienie_algorytmiczne_ms=" +
+                algorithmic_delay_ms
                 + ", typ_kompresji=" + compression_type + ", maks_mips=" + mips + ", mos=" + mos + '}';
     }*/
 

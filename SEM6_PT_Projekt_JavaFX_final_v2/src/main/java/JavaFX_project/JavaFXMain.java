@@ -4,9 +4,6 @@ import JavaFX_project.Database.TableCodecs;
 import JavaFX_project.Database.TableDaoCodecs;
 import JavaFX_project.MyClasses.MyTableData;
 import JavaFX_project.MyClasses.MyVBox;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,8 +21,6 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -36,7 +31,7 @@ public class JavaFXMain extends Application {
         MyTableData myTableData = new MyTableData();
         MyVBox myVBox = new MyVBox();
 
-        /* wybór co wyświetlać - action */
+        /* wybór co wyświetlać - action
         myVBox.menuItemCodecs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -55,7 +50,7 @@ public class JavaFXMain extends Application {
                 ((Group) scene_2.getRoot()).getChildren().addAll(tempBox);
                 stage.setScene(scene_2);
             }
-        });
+        });*/
 
         /* przyciski - action */
         myVBox.searchButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -109,7 +104,14 @@ public class JavaFXMain extends Application {
                 VBox tempBox;
                 if (onlyNumbers) {
                     TableDaoCodecs tableDaoCodecs2 = new TableDaoCodecs();
-                    List<TableCodecs> tableCodecsList2 = tableDaoCodecs2.getSpecified(codec_name, frequency_type, myVBox.fieldFromMax_kbps_bitrate.getText(), myVBox.fieldToMax_kbps_bitrate.getText(), myVBox.fieldFromFrame_ms.getText(), myVBox.fieldToFrame_ms.getText(), myVBox.fieldFromMax_bits_per_frame.getText(), myVBox.fieldToMax_bits_per_frame.getText(), myVBox.fieldFromAlgorithmic_delay_ms.getText(), myVBox.fieldToAlgorithmic_delay_ms.getText(), codec_category, compression_family, compression_variant, myVBox.fieldFromMips.getText(), myVBox.fieldToMips.getText(), myVBox.fieldFromMos.getText(), myVBox.fieldToMos.getText());
+                    List<TableCodecs> tableCodecsList2 = tableDaoCodecs2.getSpecified(codec_name, frequency_type,
+                            myVBox.fieldFromMax_kbps_bitrate.getText(), myVBox.fieldToMax_kbps_bitrate.getText(),
+                            myVBox.fieldFromFrame_ms.getText(), myVBox.fieldToFrame_ms.getText(),
+                            myVBox.fieldFromMax_bits_per_frame.getText(), myVBox.fieldToMax_bits_per_frame.getText(),
+                            myVBox.fieldFromAlgorithmic_delay_ms.getText(),
+                            myVBox.fieldToAlgorithmic_delay_ms.getText(), codec_category, compression_family,
+                            compression_variant, myVBox.fieldFromMips.getText(), myVBox.fieldToMips.getText(),
+                            myVBox.fieldFromMos.getText(), myVBox.fieldToMos.getText());
                     if (tableCodecsList2.isEmpty()) {
                         tempBox = myVBox.getMyCodecsVBox(myTableData.getCodecsTableView());
                         Label info = new Label("Żaden rekord nie spełnia podanych warunków.");
@@ -117,7 +119,8 @@ public class JavaFXMain extends Application {
                         info.setTextFill(Color.RED);
                         tempBox.getChildren().addAll(info);
                     } else {
-                        ObservableList<TableCodecs> dataTableCodecs2 = FXCollections.observableArrayList(tableCodecsList2);
+                        ObservableList<TableCodecs> dataTableCodecs2 =
+                                FXCollections.observableArrayList(tableCodecsList2);
                         tempBox = myVBox.getMyCodecsVBox(myTableData.getCodecsTableView(dataTableCodecs2));
                     }
                 } else {

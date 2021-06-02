@@ -12,14 +12,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyTableData {
 
     private TableDaoParameterDescription parameterDescriptionDao = new TableDaoParameterDescription();
     private List<TableParameterDescription> parameterDescriptionList = parameterDescriptionDao.getAll();
-    private ObservableList<TableParameterDescription> parameterDescriptionData = FXCollections.observableArrayList(parameterDescriptionList);
+    private ObservableList<TableParameterDescription> parameterDescriptionData =
+            FXCollections.observableArrayList(parameterDescriptionList);
     private String strParamDesc = "\n";
 
     private TableView<TableCodecs> codecsTableView;
@@ -54,20 +54,26 @@ public class MyTableData {
         max_bits_per_frameColl.setMinWidth(150);
         max_bits_per_frameColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("max_bits_per_frame"));
         algorithmic_delay_msColl.setMinWidth(150);
-        algorithmic_delay_msColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("algorithmic_delay_ms"));
+        algorithmic_delay_msColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>(
+                "algorithmic_delay_ms"));
         codec_categoryColl.setMinWidth(75);
         codec_categoryColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("codec_category"));
         compression_familyColl.setMinWidth(75);
         compression_familyColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("compression_family"));
         compression_variantColl.setMinWidth(75);
-        compression_variantColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("compression_variant"));
+        compression_variantColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>(
+                "compression_variant"));
         mipsColl.setMinWidth(160);
         mipsColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("mips"));
         mosColl.setMinWidth(50);
         mosColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("mos"));
 
-        String allLabelsString[] = {"Nazwa kodeka", "Zakres częstotliwości", "Maksymalna przepływność (kb/s)", "Ramka (ms)", "Maksymalna ilość bitów na ramkę", "Opóźnienie algorytmiczne (ms)", "Kategoria", "Rodzina kompresji", "Wariant kompresji", "Maksymalna wartość MIPS", "MOS"};
-        TableColumn allColumnsCodecs[] = {codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl, max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl, compression_variantColl, mipsColl, mosColl};
+        String allLabelsString[] = {"Nazwa kodeka", "Zakres częstotliwości", "Maksymalna przepływność (kb/s)", "Ramka" +
+                " (ms)", "Maksymalna ilość bitów na ramkę", "Opóźnienie algorytmiczne (ms)", "Kategoria kodeka", "Rodzina " +
+                "kompresji", "Wariant kompresji", "Maksymalna wartość MIPS", "MOS"};
+        TableColumn allColumnsCodecs[] = {codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl,
+                max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl,
+                compression_variantColl, mipsColl, mosColl};
 
         for (int i = 0; i < allColumnsCodecs.length; i++) {
             Label newLabel = new Label(allLabelsString[i]);
@@ -85,7 +91,9 @@ public class MyTableData {
         codecsTableView.setMinWidth(1240);
         codecsTableData = FXCollections.observableArrayList(codecsTableList);
         codecsTableView.setItems(codecsTableData);
-        codecsTableView.getColumns().addAll(codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl, max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl, compression_variantColl, mipsColl, mosColl); //codec_idColl,
+        codecsTableView.getColumns().addAll(codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl,
+                max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl,
+                compression_variantColl, mipsColl, mosColl); //codec_idColl,
         return codecsTableView;
     }
 
@@ -94,7 +102,9 @@ public class MyTableData {
         codecsTableView = new TableView<TableCodecs>();
         codecsTableView.setMinWidth(1240);
         codecsTableView.setItems(codecsTableData2);
-        codecsTableView.getColumns().addAll(codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl, max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl, compression_variantColl, mipsColl, mosColl); // codec_idColl,
+        codecsTableView.getColumns().addAll(codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl,
+                max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl,
+                compression_variantColl, mipsColl, mosColl); // codec_idColl,
         return codecsTableView;
     }
 
