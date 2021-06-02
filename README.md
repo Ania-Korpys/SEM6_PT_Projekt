@@ -2,13 +2,21 @@
 ## Baza danych oraz aplikacja wspomagająca pracę projektanta systemu telefonii internetowej
 
 Wymagania dotyczące sprzętu i oprogramowania (najsłabsza specyfikacja komputera na której testowane było oprogramowanie):
+
 •	System operacyjny: Windows 7 64-bit lub nowszy, 
+
 •	Procesor: procesor o taktowaniu 1 GHz lub lepszy, 
+
 •	Karta graficzna: Intel HD Graphics 4000 lub lepsza,
+
 •	Pamięć RAM: 2 GB lub więcej, 
+
 •	Miejsce na dysku: 40 MB lub więcej,
+
 •	Java Development Kit 15.0.1 lub nowsza, 
+
 •	Java 8 Update 121 lub nowsza.
+
 
 Instalacja:
 Aplikację należy pobrać ze strony jej poświęconej (https://github.com/Ania-Korpys/SEM6_PT_Projekt/tree/executable) poprzez kliknięcie przycisku „Code” → „Download ZIP”, a następnie rozpakować. Aplikacja i baza danych nie wymaga instalacji. Aby skorzystać z aplikacji należy uruchomić plik wykonywalny „VoIPAssistant.exe”. W celu poprawnego działania aplikacji plik wykonywalny „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip2.db” muszą znajdować się w tym samym folderze. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java. 
