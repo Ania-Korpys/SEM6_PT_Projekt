@@ -16,7 +16,7 @@ public class TableDaoParameterDescription {
     private final NamedParameterJdbcTemplate jdbc;
 
     public TableDaoParameterDescription() {
-        String url = "jdbc:sqlite:SQLite_voip2.db";
+        String url = "jdbc:sqlite:SQLite_voip.db";
         DataSource dataSource = new DriverManagerDataSource(url);
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }

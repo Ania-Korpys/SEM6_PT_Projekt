@@ -17,14 +17,14 @@ public class TableDaoCodecs {
     private final NamedParameterJdbcTemplate jdbc;
 
     public TableDaoCodecs() {
-        String url = "jdbc:sqlite:SQLite_voip2.db";
+        String url = "jdbc:sqlite:SQLite_voip.db";
         DataSource dataSource = new DriverManagerDataSource(url);
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 
     public List<TableCodecs> getAll() {
         String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c.ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.typ_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
+                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c.wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
         try {
             return jdbc.query(sql, new RowMapper<TableCodecs>() {
                 @Override
@@ -37,9 +37,15 @@ public class TableDaoCodecs {
                     tableCodecs.setFrame_ms(rs.getFloat(5));
                     tableCodecs.setMax_bits_per_frame(rs.getInt(6));
                     tableCodecs.setAlgorithmic_delay_ms(rs.getFloat(7));
-                    tableCodecs.setCompression_type(rs.getString(8));
-                    tableCodecs.setMips(rs.getFloat(9));
-                    tableCodecs.setMos(rs.getFloat(10));
+                    tableCodecs.setCodec_category(rs.getString(8));
+                    tableCodecs.setCompression_family(rs.getString(9));
+                    tableCodecs.setCompression_variant(rs.getString(10));
+                    tableCodecs.setMips(rs.getFloat(11));
+                    if (rs.getString(12) == null) {
+                        tableCodecs.setMos("brak");
+                    } else {
+                        tableCodecs.setMos(rs.getString(12));
+                    }
                     return tableCodecs;
                 }
             });
@@ -48,15 +54,23 @@ public class TableDaoCodecs {
         }
     }
 
-    public List<TableCodecs> getSpecified(String frequency_range, String max_kbps_bitrateFrom, String max_kbps_bitrateTo, String frame_msFrom, String frame_msTo, String max_bits_per_frameFrom, String max_bits_per_frameTo, String algorithmic_delay_msFrom, String algorithmic_delay_msTo, String compression_type, String mipsFrom, String mipsTo, String mosFrom, String mosTo) {
+    public List<TableCodecs> getSpecified(String codec_name, String frequency_range, String max_kbps_bitrateFrom, String max_kbps_bitrateTo, String frame_msFrom, String frame_msTo, String max_bits_per_frameFrom, String max_bits_per_frameTo, String algorithmic_delay_msFrom, String algorithmic_delay_msTo, String codec_category, String compression_family, String compression_version, String mipsFrom, String mipsTo, String mosFrom, String mosTo) {
         String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c.ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.typ_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
+                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c.wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
 
-        if (frequency_range != "-" || max_kbps_bitrateFrom != "" || max_kbps_bitrateTo != "" || frame_msFrom != "" || frame_msTo != "" || max_bits_per_frameFrom != "" || max_bits_per_frameTo != "" || algorithmic_delay_msFrom != "" || algorithmic_delay_msTo != "" || compression_type != "-" || mipsFrom != "" || mipsTo != "" || mosFrom != "" || mosTo != "") {
+        if (codec_name != "-" || frequency_range != "-" || max_kbps_bitrateFrom != "" || max_kbps_bitrateTo != "" || frame_msFrom != "" || frame_msTo != "" || max_bits_per_frameFrom != "" || max_bits_per_frameTo != "" || algorithmic_delay_msFrom != "" || algorithmic_delay_msTo != "" || codec_category != "-" || compression_family != "-" || compression_version != "-" || mipsFrom != "" || mipsTo != "" || mosFrom != "" || mosTo != "") {
             boolean first = true;
-            if (frequency_range != "-") {
-                sql = sql + "WHERE c.zakres_czestotliwosci = :frequency_range ";
+            if (codec_name != "-") {
+                sql = sql + "WHERE c.nazwa_kodeka = :codec_name ";
                 first = false;
+            }
+            if (frequency_range != "-") {
+                if (first) {
+                    sql = sql + "WHERE c.zakres_czestotliwosci = :frequency_range ";
+                    first = false;
+                } else {
+                    sql = sql + "AND c.zakres_czestotliwosci = :frequency_range ";
+                }
             }
             if (!max_kbps_bitrateFrom.isEmpty() || !max_kbps_bitrateTo.isEmpty()) {
                 if (max_kbps_bitrateFrom.isEmpty()) {
@@ -114,12 +128,28 @@ public class TableDaoCodecs {
                     sql = sql + "AND c.opoznienie_algorytmiczne_ms BETWEEN :algorithmic_delay_msFrom AND :algorithmic_delay_msTo ";
                 }
             }
-            if (compression_type != "-") {
+            if (codec_category != "-") {
                 if (first) {
-                    sql = sql + "WHERE c.typ_kompresji = :compression_type ";
+                    sql = sql + "WHERE c.kategoria = :codec_category ";
                     first = false;
                 } else {
-                    sql = sql + "AND c.typ_kompresji = :compression_type ";
+                    sql = sql + "AND c.kategoria = :codec_category ";
+                }
+            }
+            if (compression_family != "-") {
+                if (first) {
+                    sql = sql + "WHERE c.rodzina_kompresji = :compression_family ";
+                    first = false;
+                } else {
+                    sql = sql + "AND c.rodzina_kompresji = :compression_family ";
+                }
+            }
+            if (compression_version != "-") {
+                if (first) {
+                    sql = sql + "WHERE c.wariant_kompresji = :compression_version ";
+                    first = false;
+                } else {
+                    sql = sql + "AND c.wariant_kompresji = :compression_version ";
                 }
             }
             if (!mipsFrom.isEmpty() || !mipsTo.isEmpty()) {
@@ -152,6 +182,7 @@ public class TableDaoCodecs {
             }
         }
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("codec_name", codec_name);
         paramSource.addValue("frequency_range", frequency_range);
         paramSource.addValue("max_kbps_bitrateFrom", max_kbps_bitrateFrom);
         paramSource.addValue("max_kbps_bitrateTo", max_kbps_bitrateTo);
@@ -161,7 +192,9 @@ public class TableDaoCodecs {
         paramSource.addValue("max_bits_per_frameTo", max_bits_per_frameTo);
         paramSource.addValue("algorithmic_delay_msFrom", algorithmic_delay_msFrom);
         paramSource.addValue("algorithmic_delay_msTo", algorithmic_delay_msTo);
-        paramSource.addValue("compression_type", compression_type);
+        paramSource.addValue("codec_category", codec_category);
+        paramSource.addValue("compression_family", compression_family);
+        paramSource.addValue("compression_version", compression_version);
         paramSource.addValue("mipsFrom", mipsFrom);
         paramSource.addValue("mipsTo", mipsTo);
         paramSource.addValue("mosFrom", mosFrom);
@@ -178,9 +211,15 @@ public class TableDaoCodecs {
                     tableCodecs.setFrame_ms(rs.getFloat(5));
                     tableCodecs.setMax_bits_per_frame(rs.getInt(6));
                     tableCodecs.setAlgorithmic_delay_ms(rs.getFloat(7));
-                    tableCodecs.setCompression_type(rs.getString(8));
-                    tableCodecs.setMips(rs.getFloat(9));
-                    tableCodecs.setMos(rs.getFloat(10));
+                    tableCodecs.setCodec_category(rs.getString(8));
+                    tableCodecs.setCompression_family(rs.getString(9));
+                    tableCodecs.setCompression_variant(rs.getString(10));
+                    tableCodecs.setMips(rs.getFloat(11));
+                    if (rs.getString(12) == null) {
+                        tableCodecs.setMos("brak");
+                    } else {
+                        tableCodecs.setMos(rs.getString(12));
+                    }
                     return tableCodecs;
                 }
             });

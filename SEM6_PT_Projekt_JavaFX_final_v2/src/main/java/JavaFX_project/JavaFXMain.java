@@ -61,7 +61,11 @@ public class JavaFXMain extends Application {
         myVBox.searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                String frequency_type = myVBox.choiceBox_Frequency.getValue().toString(), compression_type = myVBox.choiceBox_CompressionTypes.getValue().toString();
+                String codec_name = myVBox.choiceBox_codec_name.getValue().toString(),
+                        frequency_type = myVBox.choiceBox_Frequency.getValue().toString(),
+                        codec_category = myVBox.choiceBox_Category.getValue().toString(),
+                        compression_family = myVBox.choiceBox_Compression_family.getValue().toString(),
+                        compression_variant = myVBox.choiceBox_Compression_variant.getValue().toString();
 
                 boolean onlyNumbers = true;
                 Pattern pattern = Pattern.compile("([0-9]*)|([0-9]+\\.[0-9]+)");
@@ -105,8 +109,8 @@ public class JavaFXMain extends Application {
                 VBox tempBox;
                 if (onlyNumbers) {
                     TableDaoCodecs tableDaoCodecs2 = new TableDaoCodecs();
-                    List<TableCodecs> tableCodecsList2 = tableDaoCodecs2.getSpecified(frequency_type, myVBox.fieldFromMax_kbps_bitrate.getText(), myVBox.fieldToMax_kbps_bitrate.getText(), myVBox.fieldFromFrame_ms.getText(), myVBox.fieldToFrame_ms.getText(), myVBox.fieldFromMax_bits_per_frame.getText(), myVBox.fieldToMax_bits_per_frame.getText(), myVBox.fieldFromAlgorithmic_delay_ms.getText(), myVBox.fieldToAlgorithmic_delay_ms.getText(), compression_type, myVBox.fieldFromMips.getText(), myVBox.fieldToMips.getText(), myVBox.fieldFromMos.getText(), myVBox.fieldToMos.getText());
-                    if(tableCodecsList2.isEmpty()){
+                    List<TableCodecs> tableCodecsList2 = tableDaoCodecs2.getSpecified(codec_name, frequency_type, myVBox.fieldFromMax_kbps_bitrate.getText(), myVBox.fieldToMax_kbps_bitrate.getText(), myVBox.fieldFromFrame_ms.getText(), myVBox.fieldToFrame_ms.getText(), myVBox.fieldFromMax_bits_per_frame.getText(), myVBox.fieldToMax_bits_per_frame.getText(), myVBox.fieldFromAlgorithmic_delay_ms.getText(), myVBox.fieldToAlgorithmic_delay_ms.getText(), codec_category, compression_family, compression_variant, myVBox.fieldFromMips.getText(), myVBox.fieldToMips.getText(), myVBox.fieldFromMos.getText(), myVBox.fieldToMos.getText());
+                    if (tableCodecsList2.isEmpty()) {
                         tempBox = myVBox.getMyCodecsVBox(myTableData.getCodecsTableView());
                         Label info = new Label("Żaden rekord nie spełnia podanych warunków.");
                         info.setFont(new Font("Arial", 15));
@@ -147,8 +151,11 @@ public class JavaFXMain extends Application {
         myVBox.resetButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                myVBox.choiceBox_codec_name.setValue("-");
                 myVBox.choiceBox_Frequency.setValue("-");
-                myVBox.choiceBox_CompressionTypes.setValue("-");
+                myVBox.choiceBox_Category.setValue("-");
+                myVBox.choiceBox_Compression_family.setValue("-");
+                myVBox.choiceBox_Compression_variant.setValue("-");
                 myVBox.fieldFromMax_kbps_bitrate.setText("");
                 myVBox.fieldToMax_kbps_bitrate.setText("");
                 myVBox.fieldFromFrame_ms.setText("");

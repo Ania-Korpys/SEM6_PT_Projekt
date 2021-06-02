@@ -13,16 +13,8 @@ public class TableParameterDescription {
         this.parameter_description = parameter_description;
     }
 
-    public String getParameter_name() {
-        return parameter_name;
-    }
-
     public void setParameter_name(String parameter_name) {
         this.parameter_name = parameter_name;
-    }
-
-    public String getParameter_description() {
-        return parameter_description;
     }
 
     public void setParameter_description(String parameter_description) {
