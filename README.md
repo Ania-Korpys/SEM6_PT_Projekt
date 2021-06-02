@@ -14,7 +14,7 @@ Wymagania dotyczące sprzętu i oprogramowania (najsłabsza specyfikacja kompute
 
 Instalacja:
 
-Aplikację należy pobrać ze strony jej poświęconej (https://github.com/Ania-Korpys/SEM6_PT_Projekt/tree/executable) poprzez kliknięcie przycisku „Code” → „Download ZIP”, a następnie rozpakować. Aplikacja i baza danych nie wymaga instalacji. Aby skorzystać z aplikacji należy uruchomić plik wykonywalny „VoIPAssistant.exe”. W celu poprawnego działania aplikacji plik wykonywalny „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip2.db” muszą znajdować się w tym samym folderze. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java.<br />
+Aplikację należy pobrać ze strony jej poświęconej (https://github.com/Ania-Korpys/SEM6_PT_Projekt/tree/executable) poprzez kliknięcie przycisku „Code” → „Download ZIP”, a następnie rozpakować. Aplikacja i baza danych nie wymaga instalacji. Aby skorzystać z aplikacji należy uruchomić plik wykonywalny „VoIPAssistant.exe”. W celu poprawnego działania aplikacji plik wykonywalny „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip.db” muszą znajdować się w tym samym folderze. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java.<br />
 
 
 Instrukcja obsługi:
