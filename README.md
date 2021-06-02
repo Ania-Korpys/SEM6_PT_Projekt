@@ -8,13 +8,16 @@ Wymagania dotyczące sprzętu i oprogramowania (najsłabsza specyfikacja kompute
 •	Pamięć RAM: 2 GB lub więcej, <br />
 •	Miejsce na dysku: 40 MB lub więcej,<br />
 •	Java Development Kit 15.0.1 lub nowsza, <br />
-•	Java 8 Update 121 lub nowsza.<br /><br />
+•	Java 8 Update 121 lub nowsza.<br />
 
-Instalacja:<br />
-Aplikację należy pobrać ze strony jej poświęconej (https://github.com/Ania-Korpys/SEM6_PT_Projekt/tree/executable) poprzez kliknięcie przycisku „Code” → „Download ZIP”, a następnie rozpakować. Aplikacja i baza danych nie wymaga instalacji. Aby skorzystać z aplikacji należy uruchomić plik wykonywalny „VoIPAssistant.exe”. W celu poprawnego działania aplikacji plik wykonywalny „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip2.db” muszą znajdować się w tym samym folderze. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java. <br /><br />
+Instalacja:
 
-Instrukcja obsługi:<br />
-W celu znalezienia informacji o kodekach o pożądanych przez nas parametrach w dolnej części okna aplikacji należy wybrać odpowiednią opcję z listy lub wpisać wartość parametru (w zależności od rodzaju intersującego nas parametru). Użytkownik ma możliwość postawienia warunków dotyczących więcej niż jednego parametru. Uzupełnienie każdego z pól jest opcjonalne. Po ustaleniu kryteriów należy wcisnąć przycisk „Szukaj”, który spowoduje wyświetlenie się wyników spełniających ustalone kryteria. <br />
+Aplikację należy pobrać ze strony jej poświęconej (https://github.com/Ania-Korpys/SEM6_PT_Projekt/tree/executable) poprzez kliknięcie przycisku „Code” → „Download ZIP”, a następnie rozpakować. Aplikacja i baza danych nie wymaga instalacji. Aby skorzystać z aplikacji należy uruchomić plik wykonywalny „VoIPAssistant.exe”. W celu poprawnego działania aplikacji plik wykonywalny „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip2.db” muszą znajdować się w tym samym folderze. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java.
+
+
+Instrukcja obsługi:
+
+W celu znalezienia informacji o kodekach o pożądanych przez nas parametrach w dolnej części okna aplikacji należy wybrać odpowiednią opcję z listy lub wpisać wartość parametru (w zależności od rodzaju intersującego nas parametru). Użytkownik ma możliwość postawienia warunków dotyczących więcej niż jednego parametru. Uzupełnienie każdego z pól jest opcjonalne. Po ustaleniu kryteriów należy wcisnąć przycisk „Szukaj”, który spowoduje wyświetlenie się wyników spełniających ustalone kryteria. 
 
 W celu zresetowania wartości pól należy wcisnąć przycisk „Reset”.
 
