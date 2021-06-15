@@ -23,7 +23,8 @@ public class MyVBox {
     public MenuButton menuButton; */
 
     public ChoiceBox choiceBox_codec_name = new ChoiceBox(FXCollections.observableArrayList("-", "AMR-NB", "AMR-WB " +
-            "(G", ".722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729", "G",
+                    "(G", ".722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729"
+            , "G",
             ".729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"));
     public ChoiceBox choiceBox_Frequency = new ChoiceBox(FXCollections.observableArrayList("-", "Szeroki", "Wąski"));
     public TextField fieldFromMax_kbps_bitrate = new TextField();
@@ -169,25 +170,16 @@ public class MyVBox {
         hBoxMos.setSpacing(20);
         hBoxMos.setMinWidth(400);
 
-
-        //hBox1 = new HBox(labelFrequency, choiceBox_Frequency, new Separator(), labelMax_kbps_bitrate,
-        // fieldFromMax_kbps_bitrate, fieldToMax_kbps_bitrate, new Separator(), labelFrame_ms, fieldFromFrame_ms,
-        // fieldToFrame_ms);
         hBox1 = new HBox(hBoxCodecs, hBoxFrequency, hBoxBitrate);
         hBox1.setSpacing(20);
 
-        //hBox2 = new HBox(labelMax_bits_per_frame, fieldFromMax_bits_per_frame, fieldToMax_bits_per_frame, new
-        // Separator(), labelAlgorithmic_delay_ms, fieldFromAlgorithmic_delay_ms, fieldToAlgorithmic_delay_ms);
         hBox2 = new HBox(hBoxFrame, hBoxBitsPerFrame, hBoxDelay);
         hBox2.setSpacing(20);
 
-        //hBox3 = new HBox(labelCompression, choiceBox_CompressionTypes, new Separator(), labelMips, fieldFromMips,
-        // fieldToMips, new Separator(), labelMos, fieldFromMos, fieldToMos);
-        hBox3 = new HBox(hBoxCategory, hBoxCompressionFamily, hBoxCompressionVariant); // hBoxCompression, hBoxMips,
-        // hBoxMos
+        hBox3 = new HBox(hBoxCategory, hBoxCompressionFamily, hBoxCompressionVariant);
         hBox3.setSpacing(20);
 
-        hBox4 = new HBox(hBoxMips, hBoxMos); // hBoxCompression, hBoxMips, hBoxMos
+        hBox4 = new HBox(hBoxMips, hBoxMos);
         hBox4.setSpacing(20);
 
         /* przyciski */
@@ -199,7 +191,7 @@ public class MyVBox {
 
         // przycisk do zapisania wyników do pliku tekstowego
         Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie wyniki.txt z wynikiem " +
-                "wyszukiwań.");
+                "wyszukiwań. \nJeżeli takowy plik istnije, zostanie zastąpiony.");
         tooltipSave.setTextAlignment(TextAlignment.CENTER);
         saveButton.setTooltip(tooltipSave);
         saveButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");

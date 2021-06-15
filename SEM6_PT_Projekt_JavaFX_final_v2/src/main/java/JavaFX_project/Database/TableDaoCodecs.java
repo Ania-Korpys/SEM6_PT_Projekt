@@ -25,7 +25,8 @@ public class TableDaoCodecs {
     public List<TableCodecs> getAll() {
         String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c" +
                 ".ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c" +
+                "c.maks_liczba_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria_kodeka, c" +
+                ".rodzina_kompresji, c" +
                 ".wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
         try {
             return jdbc.query(sql, new RowMapper<TableCodecs>() {
@@ -65,7 +66,8 @@ public class TableDaoCodecs {
                                           String mosTo) {
         String sql = "SELECT c.id_kodeka, c.nazwa_kodeka, c.zakres_czestotliwosci, c.maks_przeplywnosc_kbps, c" +
                 ".ramka_ms, " +
-                "c.maks_ilosc_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria, c.rodzina_kompresji, c" +
+                "c.maks_liczba_bitow_na_ramke, c.opoznienie_algorytmiczne_ms, c.kategoria_kodeka, c" +
+                ".rodzina_kompresji, c" +
                 ".wariant_kompresji, c.maks_mips, c.mos FROM Kodeki c ";
 
         if (codec_name != "-" || frequency_range != "-" || max_kbps_bitrateFrom != "" || max_kbps_bitrateTo != "" || frame_msFrom != "" || frame_msTo != "" || max_bits_per_frameFrom != "" || max_bits_per_frameTo != "" || algorithmic_delay_msFrom != "" || algorithmic_delay_msTo != "" || codec_category != "-" || compression_family != "-" || compression_version != "-" || mipsFrom != "" || mipsTo != "" || mosFrom != "" || mosTo != "") {
@@ -118,11 +120,11 @@ public class TableDaoCodecs {
                     max_bits_per_frameTo = "884";
                 }
                 if (first) {
-                    sql = sql + "WHERE c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
+                    sql = sql + "WHERE c.maks_liczba_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
                             ":max_bits_per_frameTo ";
                     first = false;
                 } else {
-                    sql = sql + "AND c.maks_ilosc_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
+                    sql = sql + "AND c.maks_liczba_bitow_na_ramke BETWEEN :max_bits_per_frameFrom AND " +
                             ":max_bits_per_frameTo ";
                 }
             }
@@ -144,10 +146,10 @@ public class TableDaoCodecs {
             }
             if (codec_category != "-") {
                 if (first) {
-                    sql = sql + "WHERE c.kategoria = :codec_category ";
+                    sql = sql + "WHERE c.kategoria_kodeka = :codec_category ";
                     first = false;
                 } else {
-                    sql = sql + "AND c.kategoria = :codec_category ";
+                    sql = sql + "AND c.kategoria_kodeka = :codec_category ";
                 }
             }
             if (compression_family != "-") {

@@ -69,7 +69,8 @@ public class MyTableData {
         mosColl.setCellValueFactory(new PropertyValueFactory<TableCodecs, String>("mos"));
 
         String allLabelsString[] = {"Nazwa kodeka", "Zakres częstotliwości", "Maksymalna przepływność (kb/s)", "Ramka" +
-                " (ms)", "Maksymalna ilość bitów na ramkę", "Opóźnienie algorytmiczne (ms)", "Kategoria kodeka", "Rodzina " +
+                " (ms)", "Maksymalna liczba bitów na ramkę", "Opóźnienie algorytmiczne (ms)", "Kategoria kodeka",
+                "Rodzina " +
                 "kompresji", "Wariant kompresji", "Maksymalna wartość MIPS", "MOS"};
         TableColumn allColumnsCodecs[] = {codec_nameColl, frequency_rangeColl, max_kbps_bitrateColl, frame_msColl,
                 max_bits_per_frameColl, algorithmic_delay_msColl, codec_categoryColl, compression_familyColl,
