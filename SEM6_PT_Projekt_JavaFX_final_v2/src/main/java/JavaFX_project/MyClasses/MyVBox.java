@@ -22,10 +22,7 @@ public class MyVBox {
     public MenuItem menuItemParameter = new MenuItem("Opis parametrów");
     public MenuButton menuButton; */
 
-    public ChoiceBox choiceBox_codec_name = new ChoiceBox(FXCollections.observableArrayList("-", "AMR-NB", "AMR-WB " +
-                    "(G", ".722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729"
-            , "G",
-            ".729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"));
+    public ChoiceBox choiceBox_codec_name = new ChoiceBox(FXCollections.observableArrayList("-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729" , "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"));
     public ChoiceBox choiceBox_Frequency = new ChoiceBox(FXCollections.observableArrayList("-", "Szeroki", "Wąski"));
     public TextField fieldFromMax_kbps_bitrate = new TextField();
     public TextField fieldToMax_kbps_bitrate = new TextField();
@@ -37,11 +34,8 @@ public class MyVBox {
     public TextField fieldToAlgorithmic_delay_ms = new TextField();
     public ChoiceBox choiceBox_Category = new ChoiceBox(FXCollections.observableArrayList("-", "falowy", "predykcyjny"
     ));
-    public ChoiceBox choiceBox_Compression_family = new ChoiceBox(FXCollections.observableArrayList("-", "CELP", "LPC"
-            , "MDCT", "NFC", "PCM"));
-    public ChoiceBox choiceBox_Compression_variant = new ChoiceBox(FXCollections.observableArrayList("-", "ACELP",
-            "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB" +
-                    "-ADPCM", "TSNFC", "VSELP"));
+    public ChoiceBox choiceBox_Compression_family = new ChoiceBox(FXCollections.observableArrayList("-", "CELP", "LPC", "MDCT", "NFC", "PCM"));
+    public ChoiceBox choiceBox_Compression_variant = new ChoiceBox(FXCollections.observableArrayList("-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"));
     public TextField fieldFromMips = new TextField();
     public TextField fieldToMips = new TextField();
     public TextField fieldFromMos = new TextField();
@@ -62,9 +56,7 @@ public class MyVBox {
 
         /* do szukania */
         // nazwy kodeków
-        String[] codec_names = {"-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G" +
-                ".723.1", "G.726", "G.728", "G.729", "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR",
-                "Speex (NB)", "Speex (WB)", "iLBC"};
+        String[] codec_names = {"-", "AMR-NB", "AMR-WB (G.722.2)", "BV16", "BV32", "G.711", "G.722", "G.722.1", "G.723.1", "G.726", "G.728", "G.729" , "G.729A", "G.729D", "G.729E", "GSM-EFR", "GSM-FR", "GSM-HR", "Speex (NB)", "Speex (WB)", "iLBC"};
         Label labelCodecName = new Label("Nazwa kodeka: ");
         choiceBox_codec_name.setTooltip(new Tooltip("Wybierz nazwę kodeka"));
         choiceBox_codec_name.setValue(codec_names[0]);
@@ -143,8 +135,7 @@ public class MyVBox {
 
         // wariant_kompresji
         Label labelCompression = new Label("Wariant kompresji: ");
-        String[] compression_types = {"-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC",
-                "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"};
+        String[] compression_types = {"-", "ACELP", "ADPCM", "CELP", "CS-ACELP", "CS-ACELP LPC", "LD-CELP", "LPC", "MLT", "MP-MLQ", "PCM", "RPE-LTP", "SB-ADPCM", "TSNFC", "VSELP"};
         choiceBox_Compression_variant.setTooltip(new Tooltip("Wybierz wariant kompresji"));
         choiceBox_Compression_variant.setValue(compression_types[0]);
 
