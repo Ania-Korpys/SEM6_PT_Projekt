@@ -182,7 +182,7 @@ public class MyVBox {
 
         // przycisk do zapisania wyników do pliku tekstowego
         Tooltip tooltipSave = new Tooltip("Stwórz nowy plik w domyślnym folderze o nazwie wyniki.txt z wynikiem " +
-                "wyszukiwań. \nJeżeli takowy plik istnije, zostanie zastąpiony.");
+                "wyszukiwań. \nJeżeli takowy plik istnieje, zostanie zastąpiony.");
         tooltipSave.setTextAlignment(TextAlignment.CENTER);
         saveButton.setTooltip(tooltipSave);
         saveButton.setStyle("-fx-font: 20 arial; -fx-base: #b6e7c9;");
