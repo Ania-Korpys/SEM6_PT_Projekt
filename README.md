@@ -29,3 +29,5 @@ Aplikacja działa także na komputerach mających lepsze podzespoły od tych prz
  4. W celu poprawnego działania aplikacji plik wykonywalny
     „VoIPAssistant.exe” oraz plik bazy danych „SQLite_voip.db” muszą znajdować się w tym samym folderze.
  5. Przed uruchomieniem aplikacji należy upewnić się, iż posiadamy na komputerze zainstalowaną odpowiednią wersję środowiska Java (Java 8 Update 121 lub nowsza oraz Java Development Kit 15.0.1 lub nowsza).
+
+> Projekt został zrobiony na studia w grupie 2-osobowej.
