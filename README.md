@@ -10,13 +10,14 @@
 **2. Wymagania dotyczące sprzętu i oprogramowania**
 
 Najsłabsza specyfikacja komputera, na której testowane było oprogramowanie (poprawne działanie aplikacji na słabszej specyfikacji nie jest pewne):
-• system operacyjny: Windows 7 64-bit
-• procesor: procesor o taktowaniu 1 GHz (wynikający z minimalnych wymagań systemu operacyjnego),
-• karta graficzna: Intel HD Graphics 4000,
-• pamięć RAM: 2 GB (wynikająca z minimalnych wymagań systemu operacyjnego),
-• miejsce na dysku: 40 MB,
-• Java Development Kit 15.0.1,
-• Java 8 Update 121.
+ - system operacyjny: Windows 7 64-bit 
+ - procesor: procesor o taktowaniu 1 GHz (wynikający z minimalnych wymagań systemu operacyjnego), 
+ - karta graficzna: Intel HD Graphics 4000, 
+ - pamięć RAM: 2 GB (wynikająca z minimalnych wymagań systemu operacyjnego), 
+ - miejsce na dysku: 40 MB, 
+ - Java Development Kit 15.0.1, 
+ - Java 8 Update 121. 
+
 Aplikacja działa także na komputerach mających lepsze podzespoły od tych przedstawionych powyżej.
 
 **3. Instalacja**
